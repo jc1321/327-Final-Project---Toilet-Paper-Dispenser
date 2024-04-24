@@ -1,3 +1,4 @@
+// Code for turning 35 LED strip, connected to main board by motion sensor #1
 #include <msp430g2553.h>
 #include <stdint.h>
 #include <stdbool.h>
