@@ -117,7 +117,7 @@ void main(void) {
 }
 
 
-// Port 1 service routine used for button press
+// Port 2 interrupt service routine
 #if defined(__TI_COMPILER_VERSION__) || defined(__IAR_SYSTEMS_ICC__)
 #pragma vector=PORT2_VECTOR
 __interrupt void port2 (void)
