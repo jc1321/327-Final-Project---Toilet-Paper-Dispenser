@@ -17,10 +17,9 @@ void main(void)
     BCSCTL1 = CALBC1_1MHZ;    // Set the DCO to 1 MHz
     DCOCTL = CALDCO_1MHZ;     // And load calibration data
 
-    // Set P2.0, P2.2, and P2.4 as inputs
     // P2.2 and P2.4 are for motion sensors (motor or sound and LEDs)
     // P2.0 is for button (switch song)
-    P2DIR &= ~BIT2 & ~BIT4 & ~BIT0; // Set P2.2 and P2.4 as input for motion sensors
+    P2DIR &= ~BIT2 & ~BIT4 & ~BIT0; // Set P2.0, P2.2, and P2.4 as inputs
     P2IE |= BIT2 + BIT4 + BIT0;   // Enable interrupt for P2.0, P2.2, and P2.4
     P2IES |= BIT2 +BIT4 + BIT0;  // Set with high-to-low transition
 
@@ -63,6 +62,7 @@ void __attribute__ ((interrupt(TIMER0_A0_VECTOR))) Timer_A0 (void)
                         2,2,2,2,2,2,4,2,2,2,2,2,2,4,
                         2,2,2,2,2,2,4,2,2,2,2,2,2,4}; // defining length of notes in 1/8 seconds
     int tLength = 42; // defining length of song
+    
     // Mary Had a Little Lamb
     int mNotes[] = {e,d,c,d,e,e,e,d,d,d,e,g,g,
                     e,d,c,d,e,e,e,e,d,d,e,d,c}; // defining notes
@@ -107,6 +107,7 @@ void __attribute__ ((interrupt(TIMER0_A0_VECTOR))) Timer_A0 (void)
         PlayNote(0); // turning sound off
         StopSong(); // stopping current song
     }
+    
     __bic_SR_register_on_exit(LPM3_bits);     // Clear LPM3 bits from 0(SR)
 }
 
@@ -136,7 +137,7 @@ void __attribute__ ((interrupt(PORT2_VECTOR))) port2 (void)
 
     // Button interrupt to control which song is being played
     if((P2IFG & BIT0)== BIT0){
-        P1OUT ^= BIT0; // Toggling Green LED for debugging purposes
+        P1OUT ^= BIT0; // Toggling Green LED on board for debugging purposes
         StopSong(); // Stopping the song
         PlayNote(0); // Turning sound off
         song = (song + 1) % 3; // Switching between the three songs
