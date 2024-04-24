@@ -1,3 +1,9 @@
+// Code for the main board, with motion sensor 1, motion sensor 2 , a button
+// buzzer, and motor
+// Motion sensor 1 is connected to the other two boards, and controls whether
+// sound is played
+// Motion sensor 2 activates the motor to unroll toliet paper
+// The button changes which song is being played
 #include <msp430g2553.h>
 #include <notes.h>   // defining global constants (note frequencies)
 #include "playsound.h"
