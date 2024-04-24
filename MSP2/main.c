@@ -62,7 +62,6 @@ void main(void)
     BCSCTL1 = CALBC1_1MHZ;    // Set the DCO to 1 MHz
     DCOCTL = CALDCO_1MHZ;     // And load calibration data
 
-
     P1DIR |=  BIT6; // Setting 1.6 as output (red LED on board)
     P1OUT &= ~BIT6; // Turning 1.6 off
 
