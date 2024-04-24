@@ -1,7 +1,5 @@
-#include <msp430.h>
-
 // Code for LCD display, 16x2, integrated with the motion sensor on the main board
-
+#include <msp430.h>
 #define RS BIT0             // bit for register select
 #define EN BIT1             // bit for enable
 #define D4 BIT2             // bit for D4
