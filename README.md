@@ -15,4 +15,8 @@ The second motion sensor triggers a DC motor which is attached to the toilet pap
 ## Software Architecture <br>
 * MSP430 #1 uses port 2 ISR to control motor and music being played. When P2.2 (motion sensor #2) is triggered, we toggle the motor to start/stop. When P2.4 (motion sensor #1) triggers the interrupt, a flag is toggled to start/stop playing music on the buzzer. And when P2.0 (button) is triggered, the current song is stopped and a new song is switched on. It also uses several helper source and header files. notes.h defines note frequencies and playsound.c defines helper functions to configure pins for the buzzer and move to the next note in the current song. A duration is defined to be 1/8th of a second, and a second is waited before repeating a song. <br>
 * MSP430 #2 also uses port 2 ISR to control the LED strip. When P2.4 (motion sensor #1) is triggered, the LED strip is toggled on/off. The LED strip displays 35 distinct colors, and uses helper source and header files rgb_interface.c to display the LED colors through SPI on UCB0. <br>
-* MSP430 #3 uses the same motion sensor (motion sensor #2) to toggle the message on the LCD screen. Whenever P2.4 interrupt is triggered, the message on the LCD screen is changed. <br> 
+* MSP430 #3 uses the same motion sensor (motion sensor #2) to toggle the message on the LCD screen. Whenever P2.4 interrupt is triggered, the message on the LCD screen is changed. <br>
+
+## DEMO <br>
+https://drive.google.com/file/d/1-yjEKf6huaFlV_syKFhDh6unqlxtnYkm/view?usp=drive_link
+
